@@ -3,98 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do You Love Me Eleanoooooooooooor?</title>
+<title>Do You Love Me?</title>
 <style>
   body {
     font-family: 'Comic Sans MS', cursive;
     background-color: #ffe0e5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     margin: 0;
-    color: #ff4081;
-    text-align: center;
     overflow: hidden;
-    position: relative;
+    text-align: center;
+    color: #ff4081;
   }
 
-  /* floating hearts background */
+  /* Floating hearts background */
   .heart {
-    position: absolute;
+    position: fixed;
+    bottom: -20px;
+    color: #ff80ab;
+    animation: float 6s linear infinite;
     font-size: 24px;
-    animation: floatUp 6s linear infinite;
-    opacity: 0.8;
+    z-index: -1;
   }
-
-  @keyframes floatUp {
-    0% { transform: translateY(100vh) scale(1); opacity: 0.8; }
-    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
   }
 
   .top-image img {
     width: 150px;
     height: auto;
-    margin-bottom: 15px;
+    margin-top: 20px;
   }
 
-  h1, .result {
+  h1 {
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    animation: fadeIn 1s ease-in-out;
+    margin: 20px 0;
   }
 
   .buttons {
     display: flex;
     gap: 20px;
-    margin-top: 10px;
+    justify-content: center;
+    margin-top: 20px;
   }
 
   button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    padding: 10px 25px;
+    font-size: 1.3rem;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     background-color: #ff80ab;
     color: white;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
     position: relative;
-    transition: all 0.1s ease;
   }
 
   .result {
     display: none;
     font-size: 2rem;
-    animation: glow 2s infinite alternate;
+    margin-top: 20px;
   }
 
   .result img {
-    margin-top: 10px;
     width: 200px;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes glow {
-    0% { text-shadow: 0 0 5px #ff80ab, 0 0 10px #ff80ab; }
-    100% { text-shadow: 0 0 15px #ff4081, 0 0 25px #ff4081; }
+    margin-top: 15px;
   }
 </style>
 </head>
 <body>
 
-<!-- floating hearts -->
+<!-- Hearts background -->
 <script>
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 20; i++) {
   let heart = document.createElement("div");
   heart.classList.add("heart");
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
   heart.innerHTML = "💖";
   document.body.appendChild(heart);
 }
@@ -104,14 +89,15 @@ for (let i = 0; i < 15; i++) {
   <img id="topGif" src="1.gif" alt="Cute GIF">
 </div>
 
-<h1 id="question">Do you love me eleanooooooooor? 💖</h1>
+<h1 id="question">Do you love me Eleanooooooor? 💖</h1>
+
 <div class="buttons" id="questionContainer">
   <button id="yesBtn">Yes 😍</button>
   <button id="noBtn">No 😅</button>
 </div>
 
 <div class="result" id="resultContainer">
-  Yay! I love you too sooooooooooooo much eleanooooooooor! 💕 <br>
+  <div>Yay! I love you too eleanooor sooo muchhh! 💕</div>
   <img src="https://media.tenor.com/nfN2Yz2M3CoAAAAC/cute-bear.gif" alt="Cute Bear">
 </div>
 
@@ -122,8 +108,6 @@ const questionContainer = document.getElementById("questionContainer");
 const question = document.getElementById("question");
 const resultContainer = document.getElementById("resultContainer");
 const topGif = document.getElementById("topGif");
-
-let noSize = 1;
 
 noBtn.addEventListener("mouseover", () => {
   const screenWidth = window.innerWidth;
@@ -137,27 +121,23 @@ noBtn.addEventListener("mouseover", () => {
   noBtn.style.position = "fixed";
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
-
-  // shrink each time she hovers
-  noSize *= 0.9;
-  noBtn.style.transform = `scale(${noSize})`;
+  noBtn.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.4})`;
 });
 
 yesBtn.addEventListener("click", () => {
   question.style.display = "none";
   questionContainer.style.display = "none";
-  topGif.src = "2.gif";
   resultContainer.style.display = "block";
-  
-  // confetti hearts
-  for (let i = 0; i < 30; i++) {
+  topGif.src = "2.gif";
+
+  // Rain more hearts
+  for (let i = 0; i < 50; i++) {
     let heart = document.createElement("div");
     heart.classList.add("heart");
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = Math.random() * 100 + "vh";
-    heart.style.fontSize = (20 + Math.random() * 30) + "px";
+    heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
     heart.innerHTML = "💖";
-    heart.style.animationDuration = (2 + Math.random() * 3) + "s";
     document.body.appendChild(heart);
   }
 });
@@ -165,4 +145,3 @@ yesBtn.addEventListener("click", () => {
 
 </body>
 </html>
-
