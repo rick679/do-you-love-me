@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>For my love eleanor</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">*2025—06-06,</span><br />
+			<span class="space"/><span class="comments">*2025-08-17.</span><br />
+			<span class="space"/><span class="comments">*/</span><br />
+			06/06 <span class="keyword">first time we met<br />
+			Our first words toghter on telegrame :  <span class="keyword"><br />
+			You : hey; <br />
+			Me : hello there; <br />
+			You : rick huh; <br />
+			Me : my real name is hamza; <br />
+			<span class="comments">// it was the start of Falling in love. </span><br />
+			Eleanor you are an amazing person,<br />
+			<span class="comments">a hot one tooo</span><br />
+			You are amazing at everything especially in .......... you know ;)<br />
+			<span class="comments">// AS time goes on.</span><br />
+			I can not pass a day without talking to you;<br />
+			<span class="comments">// At the same time.</span><br />
+			Even if i don't have anything to talk about;<br />
+			<span class="comments">// Both wind and snow all over the sky.</span><br />
+			<span class="comments">// even if we are separated by long distant.</span><br />
+			<span class="keyword">I am</span> very <span class="keyword">happy that i met you</span>;<br />
+			<span class="keyword">And I hope</span> you are too <span class="keyword">, i really want to make you the happiest</span>;<br />
+			<span class="placeholder"/><span class="comments">// Whether it is right now</span><br />
+			<span class="placeholder"/><span class="comments">// Still in the distant future.</span><br />
+			<span class="placeholder"/>I have but one dream;<br />
+			<span class="comments">// I really hope you would still be happy and get all the amazing things you deserve.</span><br />
+			<br>
+			<br>
+			I want to say:<br />
+			Baby, I love you forever;<br />
+			I love you as much stars in the sky;<br />
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					Darling, ito na yung time na nagkakilala tayo
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					Mahal kita magpakailanman<br/>
+					<div class="signature"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2025, 5, 6);
+together.setHours(3);
+together.setMinutes(46);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
+</body>
+</html>
